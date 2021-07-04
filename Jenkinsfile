@@ -15,7 +15,7 @@ pipeline{
   stage('Build docker image') {
    steps{
     script{
-     docker build . -t mjmanishdocker\productservice:latest
+     docker build . --t mjmanishdocker\productservice:latest
      withCredentials([string(credentialsId: 'mjmanishdocker', variable: 'dockerpass')]) {
     docker login -u mjmanishdocker -p $dockerpass
       docker push mjmanishdocker\productservice:latest
