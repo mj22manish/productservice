@@ -27,9 +27,11 @@ dockerImage = ''
  stage('Deploy Image') {
  steps{
   script {
-   docker login -u "mjmanishdocker" -p "Newcity@1" 
-docker push mjmanishdocker/productservice:latest
-
+   withCredentials([string(credentialsId: 'mjmanishdocker', variable: 'dockerpassword')]) {
+     docker login -u mjmanishdocker -p $dockerpassword 
+    docker push mjmanishdocker/productservice:latest
+}
+  
   }
  }
  }
