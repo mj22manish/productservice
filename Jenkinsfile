@@ -1,4 +1,9 @@
 pipeline{
+ environment {
+imagename = "mjmanishdocker/productservice"
+registryCredential = 'dockerpass'
+dockerImage = ''
+}
  agent any
  tools {
   maven 'maven3.6.3'
@@ -15,10 +20,8 @@ pipeline{
   stage('Build docker image') {
    steps{
     script{
-     docker build . --t mjmanishdocker/productservice:latest
-     withCredentials([string(credentialsId: 'mjmanishdocker', variable: 'dockerpass')]) {
-    docker login -u mjmanishdocker -p $dockerpass
-      docker push mjmanishdocker/productservice:latest
+     dockerImage = docker.build imagename
+
 }
     }
    }
