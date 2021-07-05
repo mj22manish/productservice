@@ -1,7 +1,7 @@
 pipeline{
  environment {
 imagename = "mjmanishdocker/productservice"
-registryCredential = 'dockerpass'
+registryCredential = 'docker_id'
 dockerImage = ''
 }
  agent any
@@ -24,6 +24,15 @@ dockerImage = ''
 }
     }
    }
-
+stage('Deploy Image') {
+steps{
+script {
+docker.withRegistry( '', registryCredential ) {
+//dockerImage.push("$BUILD_NUMBER")
+dockerImage.push('latest')
+}
+}
+}
+}
 }
 }
