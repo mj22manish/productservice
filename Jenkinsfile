@@ -27,7 +27,7 @@ dockerImage = ''
  stage('Deploy Image') {
  steps{
   script {
-   docker login -u mjmanishdocker -p Newcity@1 
+   docker login -u "mjmanishdocker" -p "Newcity@1" 
 docker push mjmanishdocker/productservice:latest
 
   }
