@@ -24,16 +24,6 @@ dockerImage = ''
 }
     }
    }
- stage('Deploy Image') {
- steps{
-  script {
-   withCredentials([string(credentialsId: 'mjmanishdocker', variable: 'dockerpassword')]) {
-     docker login -u mjmanishdocker -p $dockerpassword 
-    docker push mjmanishdocker/productservice:latest
-}
-  
-  }
- }
- }
+
 }
 }
