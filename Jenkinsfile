@@ -21,10 +21,8 @@ dockerImage = ''
    steps{
     script{
      dockerImage = docker.build imagename
-
 }
     }
    }
-  }
 }
 }
